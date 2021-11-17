@@ -1,0 +1,27 @@
+body {
+	background-color: #CEE5D0;
+	font-size: 1.5rem;
+}
+
+img {
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+}
+
+div {
+	width: 780px;
+	margin: 10px auto;
+}
+
+p {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.green {
+	color: green;
+}
+.red {
+	color: red;
+}
