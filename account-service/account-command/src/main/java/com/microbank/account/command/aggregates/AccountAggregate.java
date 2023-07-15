@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.microbank.account.command.commands.OpenAccountCommand;
 import com.microbank.account.core.aggregates.AggregateRoot;
+import com.microbank.account.core.events.AccountClosedEvent;
 import com.microbank.account.core.events.AccountOpenedEvent;
 import com.microbank.account.core.events.FundsDepositedEvent;
 import com.microbank.account.core.events.FundsWithdrawnEvent;
@@ -57,6 +58,18 @@ public class AccountAggregate extends AggregateRoot {
     public void apply(FundsWithdrawnEvent event) {
         this.setId(event.getId());
         this.setBalance(this.getBalance() - event.getAmount());
+    }
+
+    public void closeAccount() {
+        // TODO: to add validation if account is active or not
+        raiseEvent(AccountClosedEvent.builder()
+                .id(this.getId())
+                .build());
+    }
+
+    public void apply(AccountClosedEvent event) {
+        this.setId(event.getId());
+        this.setActive(false);
     }
 
 }
