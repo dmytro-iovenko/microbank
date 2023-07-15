@@ -5,6 +5,7 @@ import java.util.Date;
 import com.microbank.account.command.commands.OpenAccountCommand;
 import com.microbank.account.core.aggregates.AggregateRoot;
 import com.microbank.account.core.events.AccountOpenedEvent;
+import com.microbank.account.core.events.FundsDepositedEvent;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,6 +30,19 @@ public class AccountAggregate extends AggregateRoot {
         this.setId(event.getId());
         this.setActive(true);
         this.setBalance(event.getOpeningBalance());
+    }
+
+    public void depositFunds(double amount) {
+        // TODO: to add validation for amount <= 0
+        raiseEvent(FundsDepositedEvent.builder()
+                    .id(this.getId())
+                    .amount(amount)
+                    .build());
+    }
+    
+    public void apply(FundsDepositedEvent event) {
+        this.setId(event.getId());
+        this.setBalance(this.getBalance() + event.getAmount());
     }
 
 }
