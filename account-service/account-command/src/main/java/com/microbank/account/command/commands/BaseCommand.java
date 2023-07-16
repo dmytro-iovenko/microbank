@@ -1,12 +1,10 @@
 package com.microbank.account.command.commands;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.experimental.SuperBuilder;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
 @SuperBuilder
-public class CloseAccountCommand extends BaseCommand {
-
+public abstract class BaseCommand {
+    private String id;
 }
