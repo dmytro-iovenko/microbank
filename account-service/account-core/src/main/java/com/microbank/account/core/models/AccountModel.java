@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Account {
+public class AccountModel {
     @Id
     private String id;
     private String accountHolder;
