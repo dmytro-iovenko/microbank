@@ -11,9 +11,11 @@ import com.microbank.account.core.events.FundsWithdrawnEvent;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
 public class AccountAggregate extends AggregateRoot {
     private Boolean active;
     private double balance;

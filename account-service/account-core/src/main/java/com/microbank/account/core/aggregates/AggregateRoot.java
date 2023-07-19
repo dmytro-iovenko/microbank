@@ -13,8 +13,17 @@ import lombok.Data;
 @Data
 public abstract class AggregateRoot {
     private String id;
-    private final List<BaseEvent> changes = new ArrayList<>(); 
+    private int version = -1;
+    private final List<BaseEvent> changes = new ArrayList<>();
     private final Logger logger = Logger.getLogger(AggregateRoot.class.getName());
+
+    public List<BaseEvent> getUncommitedChanges() {
+        return this.changes;
+    }
+
+    public void markChangesAsCommited() {
+        this.changes.clear();
+    }
 
     protected void applyChange(BaseEvent event, Boolean isNewEvent) {
         try {
@@ -35,6 +44,10 @@ public abstract class AggregateRoot {
 
     public void raiseEvent(BaseEvent event) {
         applyChange(event, true);
+    }
+
+    public void replayEvents(Iterable<BaseEvent> events) {
+        events.forEach(event -> applyChange(event, false));
     }
 
 }
