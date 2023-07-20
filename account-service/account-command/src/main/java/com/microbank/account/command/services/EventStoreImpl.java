@@ -13,7 +13,7 @@ import com.microbank.account.core.events.BaseEvent;
 import com.microbank.account.core.models.EventModel;
 
 @Service
-public class AccountEventStoreImpl implements AccountEventStore {
+public class EventStoreImpl implements EventStore {
     @Autowired
     EventStoreRepository eventStoreRepository;
 
