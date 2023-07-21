@@ -20,8 +20,9 @@ public class CommandHandlerImpl implements CommandHandler {
 
     @Override
     public void handle(DepositFundsCommand command) {
-        // TODO Auto-generated method stub
-        
+        AccountAggregate accountAggregate = eventSourcingHandler.getById(command.getId());
+        accountAggregate.depositFunds(command.getAmount());
+        eventSourcingHandler.save(accountAggregate);
     }
 
     @Override
