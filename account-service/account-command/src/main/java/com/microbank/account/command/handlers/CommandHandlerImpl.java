@@ -37,9 +37,9 @@ public class CommandHandlerImpl implements CommandHandler {
 
     @Override
     public void handle(CloseAccountCommand command) {
-        // TODO Auto-generated method stub
-        
+        AccountAggregate accountAggregate = eventSourcingHandler.getById(command.getId());
+        accountAggregate.closeAccount();
+        eventSourcingHandler.save(accountAggregate);
     }
-
 
 }
