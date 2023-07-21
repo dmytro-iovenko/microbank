@@ -27,8 +27,12 @@ public class CommandHandlerImpl implements CommandHandler {
 
     @Override
     public void handle(WithdrawFundsCommand command) {
-        // TODO Auto-generated method stub
-        
+        AccountAggregate accountAggregate = eventSourcingHandler.getById(command.getId());
+        if (command.getAmount() > accountAggregate.getBalance()) {
+            throw new IllegalStateException("Withdrwal denied, insufficient funds!");
+        }
+        accountAggregate.withdrawFunds(command.getAmount());
+        eventSourcingHandler.save(accountAggregate);
     }
 
     @Override
