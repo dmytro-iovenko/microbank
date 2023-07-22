@@ -5,14 +5,16 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.microbank.account.command.aggregates.AccountAggregate;
 import com.microbank.account.command.services.EventStore;
 import com.microbank.account.core.aggregates.AggregateRoot;
 import com.microbank.account.core.events.BaseEvent;
 
+@Service
 public class EventSourcingHandlerImpl implements EventSourcingHandler {
-        @Autowired
+    @Autowired
     private EventStore eventStore;
 
     @Override
