@@ -15,7 +15,7 @@ import lombok.Data;
 @Document(collection = "eventStore")
 public class EventModel {
     @Id
-    private StrictMath id;
+    private String id;
     private Date timestamp;
     private String aggregateIdentifier;
     private String aggregateType;
