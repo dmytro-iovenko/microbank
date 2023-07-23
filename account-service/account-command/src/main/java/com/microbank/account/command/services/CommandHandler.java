@@ -1,4 +1,4 @@
-package com.microbank.account.command.handlers;
+package com.microbank.account.command.services;
 
 import com.microbank.account.command.commands.CloseAccountCommand;
 import com.microbank.account.command.commands.DepositFundsCommand;

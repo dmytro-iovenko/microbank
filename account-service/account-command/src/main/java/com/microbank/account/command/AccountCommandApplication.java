@@ -8,8 +8,8 @@ import com.microbank.account.command.commands.CloseAccountCommand;
 import com.microbank.account.command.commands.DepositFundsCommand;
 import com.microbank.account.command.commands.OpenAccountCommand;
 import com.microbank.account.command.commands.WithdrawFundsCommand;
-import com.microbank.account.command.dispatchers.CommandDispatcher;
-import com.microbank.account.command.handlers.CommandHandler;
+import com.microbank.account.command.services.CommandDispatcher;
+import com.microbank.account.command.services.CommandHandler;
 
 import jakarta.annotation.PostConstruct;
 

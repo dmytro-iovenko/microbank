@@ -1,4 +1,4 @@
-package com.microbank.account.command.dispatchers;
+package com.microbank.account.command.services;
 
 import com.microbank.account.command.commands.BaseCommand;
 

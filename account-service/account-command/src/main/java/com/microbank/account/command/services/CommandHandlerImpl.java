@@ -1,4 +1,4 @@
-package com.microbank.account.command.handlers;
+package com.microbank.account.command.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.microbank.account.command.handlers;
+package com.microbank.account.command.services;
 
 import java.util.Comparator;
 import java.util.List;
@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.microbank.account.command.aggregates.AccountAggregate;
-import com.microbank.account.command.services.EventStore;
 import com.microbank.account.core.aggregates.AggregateRoot;
 import com.microbank.account.core.events.BaseEvent;
 

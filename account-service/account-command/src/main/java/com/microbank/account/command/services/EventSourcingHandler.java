@@ -1,4 +1,4 @@
-package com.microbank.account.command.handlers;
+package com.microbank.account.command.services;
 
 import com.microbank.account.command.aggregates.AccountAggregate;
 import com.microbank.account.core.aggregates.AggregateRoot;
