@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.microbank.account.command.aggregates.AccountAggregate;
+import com.microbank.account.command.models.EventModel;
 import com.microbank.account.command.repositories.EventStoreRepository;
 import com.microbank.account.core.events.BaseEvent;
-import com.microbank.account.core.models.EventModel;
 
 @Service
 public class EventStoreImpl implements EventStore {

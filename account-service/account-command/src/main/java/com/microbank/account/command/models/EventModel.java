@@ -1,4 +1,4 @@
-package com.microbank.account.core.models;
+package com.microbank.account.command.models;
 
 import java.util.Date;
 
