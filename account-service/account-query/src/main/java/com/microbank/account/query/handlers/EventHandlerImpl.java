@@ -40,8 +40,12 @@ public class EventHandlerImpl implements EventHandler {
 
     @Override
     public void on(FundsWithdrawnEvent event) {
-        // TODO Auto-generated method stub
-
+        accountRepository.findById(event.getId()).ifPresent(account -> {
+            double currentBalance = account.getBalance();
+            double latestBalance = currentBalance - event.getAmount();
+            account.setBalance(latestBalance);
+            accountRepository.save(account);
+        });
     }
 
     @Override
