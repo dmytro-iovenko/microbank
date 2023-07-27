@@ -50,8 +50,7 @@ public class EventHandlerImpl implements EventHandler {
 
     @Override
     public void on(AccountClosedEvent event) {
-        // TODO Auto-generated method stub
-
+        accountRepository.deleteById(event.getId());
     }
 
 }
