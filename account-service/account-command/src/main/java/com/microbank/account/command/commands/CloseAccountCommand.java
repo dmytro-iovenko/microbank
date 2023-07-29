@@ -6,5 +6,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper=false)
 public class CloseAccountCommand extends BaseCommand {
-
+    public CloseAccountCommand(String id) {
+        super(id);
+    }
 }
