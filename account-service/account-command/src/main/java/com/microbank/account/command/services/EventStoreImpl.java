@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.microbank.account.command.aggregates.AccountAggregate;
+import com.microbank.account.command.kafka.EventProducer;
 import com.microbank.account.command.models.EventModel;
 import com.microbank.account.command.repositories.EventStoreRepository;
 import com.microbank.account.core.events.BaseEvent;
@@ -16,6 +17,8 @@ import com.microbank.account.core.events.BaseEvent;
 public class EventStoreImpl implements EventStore {
     @Autowired
     EventStoreRepository eventStoreRepository;
+    @Autowired
+    EventProducer eventProducer;
 
     @Override
     public void saveEvents(String aggregateId, Iterable<BaseEvent> events, int expectedVersion) {
@@ -35,8 +38,8 @@ public class EventStoreImpl implements EventStore {
                     .eventData(event)
                     .build();
             EventModel persistedEvent = eventStoreRepository.save(eventModel);
-            if (persistedEvent != null) {
-                // TODO: produce event to Kafka
+            if (!persistedEvent.getId().isEmpty()) {
+                eventProducer.produce(event.getClass().getSimpleName(), event);
             }
         }
     }
