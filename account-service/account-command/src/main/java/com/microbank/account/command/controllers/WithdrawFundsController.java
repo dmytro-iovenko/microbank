@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microbank.account.command.commands.WithdrawFundsCommand;
-import com.microbank.account.command.services.CommandDispatcher;
+import com.microbank.account.command.dispatchers.CommandDispatcher;
 import com.microbank.account.core.dto.BaseResponse;
 
 @RestController

@@ -1,4 +1,4 @@
-package com.microbank.account.command.services;
+package com.microbank.account.command.dispatchers;
 
 import java.util.HashMap;
 import java.util.LinkedList;
