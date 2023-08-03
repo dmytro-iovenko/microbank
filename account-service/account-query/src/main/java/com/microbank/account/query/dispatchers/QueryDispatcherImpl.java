@@ -5,9 +5,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import com.microbank.account.query.entities.Account;
 import com.microbank.account.query.queries.BaseQuery;
 
+@Service
 public class QueryDispatcherImpl implements QueryDispatcher {
         private final Map<Class<? extends BaseQuery>, List<QueryHandlerMethod>> routes = new HashMap<>();
 

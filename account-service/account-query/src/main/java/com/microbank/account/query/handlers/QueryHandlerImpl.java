@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.microbank.account.query.dto.EqualityType;
 import com.microbank.account.query.entities.Account;
@@ -14,6 +15,7 @@ import com.microbank.account.query.queries.FindAccountsWithBalanceQuery;
 import com.microbank.account.query.queries.FindAllAccountsQuery;
 import com.microbank.account.query.repositories.AccountRepository;
 
+@Service
 public class QueryHandlerImpl implements QueryHandler {
     @Autowired
     private AccountRepository accountRepository;
