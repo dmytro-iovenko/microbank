@@ -36,7 +36,11 @@ public class QueryHandlerImpl implements QueryHandler {
 
     @Override
     public List<Account> handle(FindAccountByIdHolderQuery query) {
-        return null;
+        Optional<Account> account = accountRepository.findByAccountHolder(query.getAccountHolder());
+        if (account.isEmpty()) return null;
+        List<Account> accountsList = new ArrayList<>();
+        accountsList.add(account.get());
+        return accountsList;
     }
 
     @Override
