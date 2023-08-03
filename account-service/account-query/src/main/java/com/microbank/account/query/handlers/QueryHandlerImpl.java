@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.microbank.account.query.dto.EqualityType;
 import com.microbank.account.query.entities.Account;
 import com.microbank.account.query.queries.FindAccountByIdHolderQuery;
 import com.microbank.account.query.queries.FindAccountByIdQuery;
@@ -45,7 +46,10 @@ public class QueryHandlerImpl implements QueryHandler {
 
     @Override
     public List<Account> handle(FindAccountsWithBalanceQuery query) {
-        return null;
+        List<Account> bankAccountsList = query.getEqualityType() == EqualityType.GREATER_THAN
+                ? accountRepository.findByBalanceGreaterThan(query.getBalance())
+                : accountRepository.findByBalanceLessThan(query.getBalance());
+        return bankAccountsList;
     }
     
 }
