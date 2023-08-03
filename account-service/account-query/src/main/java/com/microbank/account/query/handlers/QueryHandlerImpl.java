@@ -2,6 +2,7 @@ package com.microbank.account.query.handlers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,7 +27,11 @@ public class QueryHandlerImpl implements QueryHandler {
 
     @Override
     public List<Account> handle(FindAccountByIdQuery query) {
-        return null;
+        Optional<Account> account = accountRepository.findById(query.getId());
+        if (account.isEmpty()) return null;
+        List<Account> accountsList = new ArrayList<>();
+        accountsList.add(account.get());
+        return accountsList;
     }
 
     @Override
