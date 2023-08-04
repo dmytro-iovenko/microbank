@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.microbank.account.query.dispatchers.QueryDispatcher;
 import com.microbank.account.query.dto.AccountLookupResponse;
 import com.microbank.account.query.entities.Account;
+import com.microbank.account.query.queries.FindAccountByIdHolderQuery;
 import com.microbank.account.query.queries.FindAccountByIdQuery;
 import com.microbank.account.query.queries.FindAllAccountsQuery;
 
@@ -58,4 +59,24 @@ public class AccountLookupController {
             return new ResponseEntity<>(new AccountLookupResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping(path = "/byHolder/{accountHolder}")
+    public ResponseEntity<AccountLookupResponse> getAccountByHolder(
+            @PathVariable(value = "accountHolder") String accountHolder) {
+        try {
+            List<Account> accounts = queryDispatcher.send(new FindAccountByIdHolderQuery(accountHolder));
+            if (accounts == null || accounts.size() == 0) {
+                return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+            }
+            AccountLookupResponse response = AccountLookupResponse.builder()
+                    .accounts(accounts)
+                    .message("Succesfully returned bank account")
+                    .build();
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            String safeErrorMessage = "Failed to complete get account by holder request!";
+            return new ResponseEntity<>(new AccountLookupResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
