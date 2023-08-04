@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.microbank.account.query.dispatchers.QueryDispatcher;
 import com.microbank.account.query.dto.AccountLookupResponse;
+import com.microbank.account.query.dto.EqualityType;
 import com.microbank.account.query.entities.Account;
 import com.microbank.account.query.queries.FindAccountByIdHolderQuery;
 import com.microbank.account.query.queries.FindAccountByIdQuery;
+import com.microbank.account.query.queries.FindAccountsWithBalanceQuery;
 import com.microbank.account.query.queries.FindAllAccountsQuery;
 
 @RestController
@@ -75,6 +77,26 @@ public class AccountLookupController {
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             String safeErrorMessage = "Failed to complete get account by holder request!";
+            return new ResponseEntity<>(new AccountLookupResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(path = "/withBalance/{equalityType}/{balance}")
+    public ResponseEntity<AccountLookupResponse> getAccountsWithBalance(
+            @PathVariable(value = "equalityType") EqualityType equalityType,
+            @PathVariable(value = "balance") double balance) {
+        try {
+            List<Account> accounts = queryDispatcher.send(new FindAccountsWithBalanceQuery(equalityType, balance));
+            if (accounts == null || accounts.size() == 0) {
+                return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+            }
+            AccountLookupResponse response = AccountLookupResponse.builder()
+                    .accounts(accounts)
+                    .message(MessageFormat.format("Succesfully returned {0} bank account(s)", accounts.size()))
+                    .build();
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            String safeErrorMessage = "Failed to complete get accounts with balance request!";
             return new ResponseEntity<>(new AccountLookupResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
