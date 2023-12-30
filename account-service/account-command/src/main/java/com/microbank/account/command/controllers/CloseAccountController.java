@@ -14,8 +14,11 @@ import com.microbank.account.command.commands.CloseAccountCommand;
 import com.microbank.account.command.dispatchers.CommandDispatcher;
 import com.microbank.account.core.dto.BaseResponse;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping(path = "/api/v1/closeAccount")
+@Slf4j
 public class CloseAccountController {
     @Autowired
     private CommandDispatcher commandDispatcher;
@@ -28,6 +31,7 @@ public class CloseAccountController {
         } catch (Exception e) {
             String safeErrorMessage = MessageFormat
                     .format("Error while processing request to close bank account with id - {0}", id);
+            log.error(safeErrorMessage, e);
             return new ResponseEntity<>(new BaseResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 

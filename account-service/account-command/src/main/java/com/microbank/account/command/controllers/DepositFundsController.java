@@ -15,8 +15,11 @@ import com.microbank.account.command.commands.DepositFundsCommand;
 import com.microbank.account.command.dispatchers.CommandDispatcher;
 import com.microbank.account.core.dto.BaseResponse;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping(path = "/api/v1/depositFunds")
+@Slf4j
 public class DepositFundsController {
     @Autowired
     private CommandDispatcher commandDispatcher;
@@ -30,6 +33,7 @@ public class DepositFundsController {
         } catch (Exception e) {
             String safeErrorMessage = MessageFormat
                     .format("Error while processing request to deposit funds to bank account with id - {0}", id);
+            log.error(safeErrorMessage, e);
             return new ResponseEntity<>(new BaseResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

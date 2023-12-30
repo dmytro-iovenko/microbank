@@ -15,8 +15,11 @@ import com.microbank.account.command.commands.WithdrawFundsCommand;
 import com.microbank.account.command.dispatchers.CommandDispatcher;
 import com.microbank.account.core.dto.BaseResponse;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping(path = "/api/v1/withdrawFunds")
+@Slf4j
 public class WithdrawFundsController {
     @Autowired
     private CommandDispatcher commandDispatcher;
@@ -29,6 +32,7 @@ public class WithdrawFundsController {
             return new ResponseEntity<>(new BaseResponse("Withdraw funds request completed succesfully!"), HttpStatus.OK);
         } catch (Exception e) {
             String safeErrorMessage = MessageFormat.format("Error while processing request to withdraw funds from bank account with id - {0}", id);
+            log.error(safeErrorMessage, e);
             return new ResponseEntity<>(new BaseResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }    

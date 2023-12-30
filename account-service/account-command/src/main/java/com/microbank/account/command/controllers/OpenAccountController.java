@@ -16,8 +16,11 @@ import com.microbank.account.command.dispatchers.CommandDispatcher;
 import com.microbank.account.command.dto.OpenAccountResponse;
 import com.microbank.account.core.dto.BaseResponse;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping(path = "/api/v1/openAccount")
+@Slf4j
 public class OpenAccountController {
     @Autowired
     private CommandDispatcher commandDispatcher;
@@ -34,6 +37,7 @@ public class OpenAccountController {
         } catch (Exception e) {
             String safeErrorMessage = MessageFormat
                     .format("Error while processing request to open a new bank account for id - {0}", id);
+            log.error(safeErrorMessage, e);
             return new ResponseEntity<>(new OpenAccountResponse(safeErrorMessage, id),
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
