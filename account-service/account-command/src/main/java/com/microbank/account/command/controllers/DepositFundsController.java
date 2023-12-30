@@ -30,6 +30,9 @@ public class DepositFundsController {
             command.setId(id);
             commandDispatcher.send(command);
             return new ResponseEntity<>(new BaseResponse("Deposit funds request completed succesfully!"), HttpStatus.OK);
+        } catch (IllegalStateException e) {
+            log.warn("Client made a bad request - {}", e.getMessage());
+            return new ResponseEntity<>(new BaseResponse(e.getMessage()), HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
             String safeErrorMessage = MessageFormat
                     .format("Error while processing request to deposit funds to bank account with id - {0}", id);

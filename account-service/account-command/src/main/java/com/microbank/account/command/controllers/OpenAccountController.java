@@ -34,6 +34,9 @@ public class OpenAccountController {
             return new ResponseEntity<>(
                     new OpenAccountResponse("Bank account creation request completed succesfully!", id),
                     HttpStatus.CREATED);
+        } catch (IllegalStateException e) {
+            log.warn("Client made a bad request - {}", e.getMessage());
+            return new ResponseEntity<>(new BaseResponse(e.toString()), HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
             String safeErrorMessage = MessageFormat
                     .format("Error while processing request to open a new bank account for id - {0}", id);

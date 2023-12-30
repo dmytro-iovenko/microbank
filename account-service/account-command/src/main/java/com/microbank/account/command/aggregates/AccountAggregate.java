@@ -2,6 +2,8 @@ package com.microbank.account.command.aggregates;
 
 import java.util.Date;
 
+import org.apache.kafka.common.errors.IllegalSaslStateException;
+
 import com.microbank.account.command.commands.OpenAccountCommand;
 import com.microbank.account.core.aggregates.AggregateRoot;
 import com.microbank.account.core.events.AccountClosedEvent;
@@ -37,7 +39,12 @@ public class AccountAggregate extends AggregateRoot {
     }
 
     public void depositFunds(double amount) {
-        // TODO: to add validation for amount <= 0
+        if (!this.getActive()) {
+            throw new IllegalSaslStateException("Funds cannot be deposited into a closed account!");
+        }
+        if (amount <= 0) {
+            throw new IllegalSaslStateException("The deposit amount should be greater then 0!");
+        }
         raiseEvent(FundsDepositedEvent.builder()
                 .id(this.getId())
                 .amount(amount)
@@ -50,7 +57,12 @@ public class AccountAggregate extends AggregateRoot {
     }
 
     public void withdrawFunds(double amount) {
-        // TODO: to add validation for amount <= 0
+        if (!this.getActive()) {
+            throw new IllegalSaslStateException("Funds cannot be withdrawn from a closed account!");
+        }
+        if (amount <= 0) {
+            throw new IllegalSaslStateException("The withdraw amount should be greater then 0!");
+        }
         raiseEvent(FundsWithdrawnEvent.builder()
                 .id(this.getId())
                 .amount(amount)
@@ -63,7 +75,9 @@ public class AccountAggregate extends AggregateRoot {
     }
 
     public void closeAccount() {
-        // TODO: to add validation if account is active or not
+        if (!this.getActive()) {
+            throw new IllegalSaslStateException("The bank account has already been closed!");
+        }
         raiseEvent(AccountClosedEvent.builder()
                 .id(this.getId())
                 .build());

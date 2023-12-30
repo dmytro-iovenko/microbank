@@ -28,6 +28,9 @@ public class CloseAccountController {
         try {
             commandDispatcher.send(new CloseAccountCommand(id));
             return new ResponseEntity<>(new BaseResponse("Bank account closure request completed succesfully!"), HttpStatus.NO_CONTENT);
+        } catch (IllegalStateException e) {
+            log.warn("Client made a bad request - {}", e.getMessage());
+            return new ResponseEntity<>(new BaseResponse(e.getMessage()), HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
             String safeErrorMessage = MessageFormat
                     .format("Error while processing request to close bank account with id - {0}", id);

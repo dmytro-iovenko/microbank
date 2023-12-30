@@ -48,7 +48,7 @@ public class EventStoreImpl implements EventStore {
     public List<BaseEvent> getEvents(String aggregateId) {
         List<EventModel> eventStream = eventStoreRepository.findByAggregateIdentifier(aggregateId);
         if (eventStream == null || eventStream.isEmpty()) {
-            throw new RuntimeException("Incorrect account ID provided!");
+            throw new IllegalStateException("Incorrect account ID provided!");
         }
         return eventStream.stream().map(event -> event.getEventData()).collect(Collectors.toList());
     }
