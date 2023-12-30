@@ -1,21 +1,19 @@
 package com.microbank.account.core.aggregates;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import com.microbank.account.core.events.BaseEvent;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 @Data
+@Slf4j
 public abstract class AggregateRoot {
     private String id;
     private int version = -1;
     private final List<BaseEvent> changes = new ArrayList<>();
-    private final Logger logger = Logger.getLogger(AggregateRoot.class.getName());
 
     public List<BaseEvent> getUncommitedChanges() {
         return this.changes;
@@ -31,10 +29,10 @@ public abstract class AggregateRoot {
             method.setAccessible(true);
             method.invoke(this, event);
         } catch (NoSuchMethodException e) {
-            logger.log(Level.WARNING, MessageFormat.format("The apply method was not found in the aggregate for {0}",
-                    event.getClass().getName()), e);
+            log.warn("The apply method was not found in the aggregate for {}",
+                    event.getClass().getName(), e);
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error applying event to aggregate", e);
+            log.error("Error applying event to aggregate", e);
         } finally {
             if (isNewEvent) {
                 changes.add(event);
