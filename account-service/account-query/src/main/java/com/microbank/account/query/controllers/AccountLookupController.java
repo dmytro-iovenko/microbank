@@ -20,8 +20,11 @@ import com.microbank.account.query.queries.FindAccountByIdQuery;
 import com.microbank.account.query.queries.FindAccountsWithBalanceQuery;
 import com.microbank.account.query.queries.FindAllAccountsQuery;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping(path = "/api/v1/accountLookup")
+@Slf4j
 public class AccountLookupController {
         @Autowired
     private QueryDispatcher queryDispatcher;
@@ -40,6 +43,7 @@ public class AccountLookupController {
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             String safeErrorMessage = "Failed to complete get all accounts request!";
+            log.error(safeErrorMessage, e);
             return new ResponseEntity<>(new AccountLookupResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -58,6 +62,7 @@ public class AccountLookupController {
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             String safeErrorMessage = "Failed to complete get account by ID request!";
+            log.error(safeErrorMessage, e);
             return new ResponseEntity<>(new AccountLookupResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -77,6 +82,7 @@ public class AccountLookupController {
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             String safeErrorMessage = "Failed to complete get account by holder request!";
+            log.error(safeErrorMessage, e);
             return new ResponseEntity<>(new AccountLookupResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -97,6 +103,7 @@ public class AccountLookupController {
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             String safeErrorMessage = "Failed to complete get accounts with balance request!";
+            log.error(safeErrorMessage, e);
             return new ResponseEntity<>(new AccountLookupResponse(safeErrorMessage), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
