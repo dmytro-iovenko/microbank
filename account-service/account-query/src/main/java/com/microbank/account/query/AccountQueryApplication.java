@@ -3,6 +3,7 @@ package com.microbank.account.query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import com.microbank.account.query.dispatchers.QueryDispatcher;
 import com.microbank.account.query.handlers.QueryHandler;
@@ -13,6 +14,7 @@ import com.microbank.account.query.queries.FindAllAccountsQuery;
 
 import jakarta.annotation.PostConstruct;
 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class AccountQueryApplication {
 	@Autowired
