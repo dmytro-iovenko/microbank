@@ -3,6 +3,7 @@ package com.microbank.account.command;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import com.microbank.account.command.commands.CloseAccountCommand;
 import com.microbank.account.command.commands.DepositFundsCommand;
@@ -13,6 +14,7 @@ import com.microbank.account.command.services.CommandHandler;
 
 import jakarta.annotation.PostConstruct;
 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class AccountCommandApplication {
 	@Autowired
