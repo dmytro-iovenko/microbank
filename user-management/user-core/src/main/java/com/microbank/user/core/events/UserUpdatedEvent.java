@@ -1,4 +1,4 @@
-package com.microbank.user.core.models.events;
+package com.microbank.user.core.events;
 
 import com.microbank.user.core.models.User;
 
@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class UserRegisteredEvent {
+public class UserUpdatedEvent {
     private String id;
     private User user;
 }
