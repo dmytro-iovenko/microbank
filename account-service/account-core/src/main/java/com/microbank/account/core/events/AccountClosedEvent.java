@@ -1,5 +1,7 @@
 package com.microbank.account.core.events;
 
+import com.microbank.base.core.events.BaseEvent;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.microbank.account.core.events;
+package com.microbank.base.core.events;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

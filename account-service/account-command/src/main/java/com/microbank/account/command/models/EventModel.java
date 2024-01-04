@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.microbank.account.core.events.BaseEvent;
+import com.microbank.base.core.events.BaseEvent;
 
 import jakarta.persistence.Id;
 import lombok.Builder;

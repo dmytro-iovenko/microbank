@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import com.microbank.account.core.events.BaseEvent;
+import com.microbank.base.core.events.BaseEvent;
 
 @Service
 public class EventProducerImpl implements EventProducer {

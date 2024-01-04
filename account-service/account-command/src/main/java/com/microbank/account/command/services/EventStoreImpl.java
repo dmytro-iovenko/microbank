@@ -11,7 +11,7 @@ import com.microbank.account.command.aggregates.AccountAggregate;
 import com.microbank.account.command.kafka.EventProducer;
 import com.microbank.account.command.models.EventModel;
 import com.microbank.account.command.repositories.EventStoreRepository;
-import com.microbank.account.core.events.BaseEvent;
+import com.microbank.base.core.events.BaseEvent;
 
 @Service
 public class EventStoreImpl implements EventStore {

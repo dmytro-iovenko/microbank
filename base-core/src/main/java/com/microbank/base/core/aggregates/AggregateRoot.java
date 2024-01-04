@@ -1,9 +1,9 @@
-package com.microbank.account.core.aggregates;
+package com.microbank.base.core.aggregates;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.microbank.account.core.events.BaseEvent;
+import com.microbank.base.core.events.BaseEvent;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

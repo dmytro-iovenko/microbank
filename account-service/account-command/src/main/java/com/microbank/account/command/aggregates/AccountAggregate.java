@@ -5,11 +5,11 @@ import java.util.Date;
 import org.apache.kafka.common.errors.IllegalSaslStateException;
 
 import com.microbank.account.command.commands.OpenAccountCommand;
-import com.microbank.account.core.aggregates.AggregateRoot;
 import com.microbank.account.core.events.AccountClosedEvent;
 import com.microbank.account.core.events.AccountOpenedEvent;
 import com.microbank.account.core.events.FundsDepositedEvent;
 import com.microbank.account.core.events.FundsWithdrawnEvent;
+import com.microbank.base.core.aggregates.AggregateRoot;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
