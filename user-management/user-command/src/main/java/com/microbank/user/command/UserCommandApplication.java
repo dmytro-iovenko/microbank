@@ -1,4 +1,4 @@
-package com.microbank.usercommand;
+package com.microbank.user.command;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

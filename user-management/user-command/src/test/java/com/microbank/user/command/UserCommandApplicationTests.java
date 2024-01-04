@@ -1,4 +1,4 @@
-package com.microbank.usercommand;
+package com.microbank.user.command;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
