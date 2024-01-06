@@ -1,4 +1,4 @@
-package com.microbank.user.aggregates;
+package com.microbank.user.command.aggregates;
 
 import com.microbank.base.core.aggregates.AggregateRoot;
 import com.microbank.user.command.commands.RegisterUserCommand;
