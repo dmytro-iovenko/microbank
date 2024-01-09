@@ -1,10 +1,14 @@
 package com.microbank.user.command.aggregates;
 
+import java.util.UUID;
+
 import com.microbank.base.core.aggregates.AggregateRoot;
 import com.microbank.user.command.commands.RegisterUserCommand;
+import com.microbank.user.command.commands.UpdateUserCommand;
 import com.microbank.user.command.security.PasswordEncoder;
 import com.microbank.user.command.security.PasswordEncoderImpl;
 import com.microbank.user.core.events.UserRegisteredEvent;
+import com.microbank.user.core.events.UserUpdatedEvent;
 import com.microbank.user.core.models.User;
 
 import lombok.Data;
@@ -42,4 +46,21 @@ public class UserAggregate extends AggregateRoot {
         this.setUser(event.getUser());
     }
 
+    public void updateUser(UpdateUserCommand command) {
+        User updatedUser = command.getUser();
+        updatedUser.setId(command.getId());
+
+        String password = updatedUser.getAccount().getPassword();
+        String encryptedPassword = passwordEncoder.encryptPassword(password);
+        updatedUser.getAccount().setPassword(encryptedPassword);
+
+        raiseEvent(UserUpdatedEvent.builder()
+            .id(UUID.randomUUID().toString())
+            .user(command.getUser())
+            .build());
+    }
+
+    public void apply(UserUpdatedEvent event) {
+        this.setUser(event.getUser());
+    }
 }
