@@ -7,6 +7,7 @@ import com.microbank.user.command.commands.RegisterUserCommand;
 import com.microbank.user.command.commands.UpdateUserCommand;
 import com.microbank.user.command.security.PasswordEncoder;
 import com.microbank.user.command.security.PasswordEncoderImpl;
+import com.microbank.user.core.events.UserDeletedEvent;
 import com.microbank.user.core.events.UserRegisteredEvent;
 import com.microbank.user.core.events.UserUpdatedEvent;
 import com.microbank.user.core.models.User;
@@ -18,6 +19,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class UserAggregate extends AggregateRoot {
     private User user;
+    private Boolean active;
     
     private final PasswordEncoder passwordEncoder;
 
@@ -44,6 +46,7 @@ public class UserAggregate extends AggregateRoot {
     public void apply(UserRegisteredEvent event) {
         this.setId(event.getId());
         this.setUser(event.getUser());
+        this.setActive(true);
     }
 
     public void updateUser(UpdateUserCommand command) {
@@ -62,5 +65,17 @@ public class UserAggregate extends AggregateRoot {
 
     public void apply(UserUpdatedEvent event) {
         this.setUser(event.getUser());
+    }
+
+    public void deleteUser() {
+        // TODO: to add validation if user is active or not
+        raiseEvent(UserDeletedEvent.builder()
+                .id(this.getId())
+                .build());
+    }
+
+    public void apply(UserDeletedEvent event) {
+        this.setId(event.getId());
+        this.setActive(false);
     }
 }

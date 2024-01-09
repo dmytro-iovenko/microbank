@@ -15,6 +15,5 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 public class UserRegisteredEvent extends BaseEvent {
-    private String id;
     private User user;
 }
