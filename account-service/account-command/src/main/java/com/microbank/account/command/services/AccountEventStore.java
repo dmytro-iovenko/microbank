@@ -9,12 +9,13 @@ import org.springframework.stereotype.Service;
 
 import com.microbank.account.command.aggregates.AccountAggregate;
 import com.microbank.account.command.kafka.EventProducer;
+import com.microbank.account.command.repositories.EventStoreRepository;
 import com.microbank.base.core.events.BaseEvent;
 import com.microbank.base.core.models.EventModel;
-import com.microbank.base.core.repositories.EventStoreRepository;
+import com.microbank.base.core.services.EventStore;
 
 @Service
-public class EventStoreImpl implements EventStore {
+public class AccountEventStore implements EventStore {
     @Autowired
     EventStoreRepository eventStoreRepository;
     @Autowired

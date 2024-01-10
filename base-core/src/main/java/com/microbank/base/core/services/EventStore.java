@@ -1,4 +1,4 @@
-package com.microbank.account.command.services;
+package com.microbank.base.core.services;
 
 import java.util.List;
 

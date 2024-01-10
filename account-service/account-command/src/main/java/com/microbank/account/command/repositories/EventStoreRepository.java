@@ -1,4 +1,4 @@
-package com.microbank.base.core.repositories;
+package com.microbank.account.command.repositories;
 
 import java.util.List;
 
