@@ -9,8 +9,8 @@ import com.microbank.account.command.commands.CloseAccountCommand;
 import com.microbank.account.command.commands.DepositFundsCommand;
 import com.microbank.account.command.commands.OpenAccountCommand;
 import com.microbank.account.command.commands.WithdrawFundsCommand;
-import com.microbank.account.command.dispatchers.CommandDispatcher;
 import com.microbank.account.command.services.CommandHandler;
+import com.microbank.base.core.dispatchers.CommandDispatcher;
 
 import jakarta.annotation.PostConstruct;
 

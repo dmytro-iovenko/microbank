@@ -1,6 +1,6 @@
-package com.microbank.account.command.dispatchers;
+package com.microbank.base.core.dispatchers;
 
-import com.microbank.account.command.commands.BaseCommand;
+import com.microbank.base.core.commands.BaseCommand;
 
 public interface CommandDispatcher {
     @FunctionalInterface

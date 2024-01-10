@@ -7,10 +7,11 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.microbank.account.command.commands.BaseCommand;
+import com.microbank.base.core.commands.BaseCommand;
+import com.microbank.base.core.dispatchers.CommandDispatcher;
 
 @Service
-public class CommandDispatcherImpl implements CommandDispatcher {
+public class AccountCommandDispatcher implements CommandDispatcher {
 
     private final Map<Class<? extends BaseCommand>, List<CommandHandlerMethod>> routes = new HashMap<>();
 

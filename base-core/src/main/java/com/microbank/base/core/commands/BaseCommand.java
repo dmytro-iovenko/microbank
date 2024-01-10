@@ -1,4 +1,4 @@
-package com.microbank.account.command.commands;
+package com.microbank.base.core.commands;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
