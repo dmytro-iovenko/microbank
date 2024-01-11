@@ -9,7 +9,7 @@ import com.microbank.account.command.commands.CloseAccountCommand;
 import com.microbank.account.command.commands.DepositFundsCommand;
 import com.microbank.account.command.commands.OpenAccountCommand;
 import com.microbank.account.command.commands.WithdrawFundsCommand;
-import com.microbank.account.command.services.CommandHandler;
+import com.microbank.account.command.services.AccountCommandHandler;
 import com.microbank.base.core.dispatchers.CommandDispatcher;
 
 import jakarta.annotation.PostConstruct;
@@ -20,7 +20,7 @@ public class AccountCommandApplication {
 	@Autowired
 	private CommandDispatcher commandDispatcher;
 	@Autowired
-	private CommandHandler commandHandler;
+	private AccountCommandHandler commandHandler;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AccountCommandApplication.class, args);

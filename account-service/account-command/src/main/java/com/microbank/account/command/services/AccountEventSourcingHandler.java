@@ -10,10 +10,11 @@ import org.springframework.stereotype.Service;
 import com.microbank.account.command.aggregates.AccountAggregate;
 import com.microbank.base.core.aggregates.AggregateRoot;
 import com.microbank.base.core.events.BaseEvent;
+import com.microbank.base.core.services.EventSourcingHandler;
 import com.microbank.base.core.services.EventStore;
 
 @Service
-public class EventSourcingHandlerImpl implements EventSourcingHandler {
+public class AccountEventSourcingHandler implements EventSourcingHandler<AccountAggregate> {
     @Autowired
     private EventStore eventStore;
 

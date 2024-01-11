@@ -8,11 +8,12 @@ import com.microbank.account.command.commands.CloseAccountCommand;
 import com.microbank.account.command.commands.DepositFundsCommand;
 import com.microbank.account.command.commands.OpenAccountCommand;
 import com.microbank.account.command.commands.WithdrawFundsCommand;
+import com.microbank.base.core.services.EventSourcingHandler;
 
 @Service
-public class CommandHandlerImpl implements CommandHandler {
+public class AccountCommandHandlerImpl implements AccountCommandHandler {
     @Autowired
-    private EventSourcingHandler eventSourcingHandler;
+    private EventSourcingHandler<AccountAggregate> eventSourcingHandler;
 
     @Override
     public void handle(OpenAccountCommand command) {
