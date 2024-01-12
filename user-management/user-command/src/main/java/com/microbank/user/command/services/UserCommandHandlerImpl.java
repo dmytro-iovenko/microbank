@@ -27,7 +27,9 @@ public class UserCommandHandlerImpl implements UserCommandHandler {
 
     @Override
     public void handle(DeleteUserCommand command) {
-        // TODO Auto-generated method stub
+        UserAggregate userAggregate = eventSourcingHandler.getById(command.getId());
+        userAggregate.deleteUser();
+        eventSourcingHandler.save(userAggregate);
         
     }
     
