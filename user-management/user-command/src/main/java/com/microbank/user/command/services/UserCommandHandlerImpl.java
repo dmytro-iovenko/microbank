@@ -20,8 +20,9 @@ public class UserCommandHandlerImpl implements UserCommandHandler {
 
     @Override
     public void handle(UpdateUserCommand command) {
-        // TODO Auto-generated method stub
-        
+        UserAggregate userAggregate = eventSourcingHandler.getById(command.getId());
+        userAggregate.updateUser(command);
+        eventSourcingHandler.save(userAggregate);
     }
 
     @Override
