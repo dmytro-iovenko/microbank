@@ -30,7 +30,6 @@ public class UserCommandHandlerImpl implements UserCommandHandler {
         UserAggregate userAggregate = eventSourcingHandler.getById(command.getId());
         userAggregate.deleteUser();
         eventSourcingHandler.save(userAggregate);
-        
     }
     
 }
