@@ -1,6 +1,7 @@
 package com.microbank.user.command.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.microbank.base.core.services.EventSourcingHandler;
 import com.microbank.user.command.aggregates.UserAggregate;
@@ -8,6 +9,7 @@ import com.microbank.user.command.commands.DeleteUserCommand;
 import com.microbank.user.command.commands.RegisterUserCommand;
 import com.microbank.user.command.commands.UpdateUserCommand;
 
+@Service
 public class UserCommandHandlerImpl implements UserCommandHandler {
     @Autowired
     private EventSourcingHandler<UserAggregate> eventSourcingHandler;
