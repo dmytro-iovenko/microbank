@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.microbank.base.core.models.EventModel;
 
 @Repository
-public interface EventStoreRepository extends MongoRepository<EventModel, String> {
+public interface UserEventStoreRepository extends MongoRepository<EventModel, String> {
     List<EventModel> findByAggregateIdentifier(String aggregateIdentifier);
 }

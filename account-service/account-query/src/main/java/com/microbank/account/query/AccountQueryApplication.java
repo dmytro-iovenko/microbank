@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import com.microbank.account.query.dispatchers.QueryDispatcher;
-import com.microbank.account.query.handlers.QueryHandler;
+import com.microbank.account.query.handlers.AccountQueryHandler;
 import com.microbank.account.query.queries.FindAccountByIdHolderQuery;
 import com.microbank.account.query.queries.FindAccountByIdQuery;
 import com.microbank.account.query.queries.FindAccountsWithBalanceQuery;
@@ -21,7 +21,7 @@ public class AccountQueryApplication {
 	private QueryDispatcher queryDispatcher;
 
 	@Autowired
-	private QueryHandler queryHandler;
+	private AccountQueryHandler queryHandler;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AccountQueryApplication.class, args);

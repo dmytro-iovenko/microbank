@@ -9,7 +9,7 @@ import com.microbank.user.core.events.UserUpdatedEvent;
 import com.microbank.user.query.repositories.UserRepository;
 
 @Service
-public class EventHandlerImpl implements EventHandler {
+public class UserEventHandlerImpl implements UserEventHandler {
     @Autowired
     private UserRepository userRepository;
 

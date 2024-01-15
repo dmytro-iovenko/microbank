@@ -4,7 +4,7 @@ import com.microbank.user.core.events.UserDeletedEvent;
 import com.microbank.user.core.events.UserRegisteredEvent;
 import com.microbank.user.core.events.UserUpdatedEvent;
 
-public interface EventHandler {
+public interface UserEventHandler {
     void on(UserRegisteredEvent event);
     void on(UserUpdatedEvent event);
     void on(UserDeletedEvent event);

@@ -16,7 +16,7 @@ import com.microbank.account.query.queries.FindAllAccountsQuery;
 import com.microbank.account.query.repositories.AccountRepository;
 
 @Service
-public class QueryHandlerImpl implements QueryHandler {
+public class AccountQueryHandlerImpl implements AccountQueryHandler {
     @Autowired
     private AccountRepository accountRepository;
 

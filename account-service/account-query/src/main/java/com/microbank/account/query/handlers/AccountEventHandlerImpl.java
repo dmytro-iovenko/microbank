@@ -11,7 +11,7 @@ import com.microbank.account.query.entities.Account;
 import com.microbank.account.query.repositories.AccountRepository;
 
 @Service
-public class EventHandlerImpl implements EventHandler {
+public class AccountEventHandlerImpl implements AccountEventHandler {
     @Autowired
     private AccountRepository accountRepository;
 

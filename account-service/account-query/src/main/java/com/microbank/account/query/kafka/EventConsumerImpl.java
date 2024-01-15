@@ -9,12 +9,12 @@ import com.microbank.account.core.events.AccountClosedEvent;
 import com.microbank.account.core.events.AccountOpenedEvent;
 import com.microbank.account.core.events.FundsDepositedEvent;
 import com.microbank.account.core.events.FundsWithdrawnEvent;
-import com.microbank.account.query.handlers.EventHandler;
+import com.microbank.account.query.handlers.AccountEventHandler;
 
 @Service
 public class EventConsumerImpl implements EventConsumer {
     @Autowired
-    private EventHandler eventHandler;
+    private AccountEventHandler eventHandler;
     
     @KafkaListener(topics = "AccountOpenedEvent", groupId = "${spring.kafka.consumer.group-id}")
     @Override

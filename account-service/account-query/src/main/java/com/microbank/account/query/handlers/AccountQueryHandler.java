@@ -8,7 +8,7 @@ import com.microbank.account.query.queries.FindAccountByIdQuery;
 import com.microbank.account.query.queries.FindAccountsWithBalanceQuery;
 import com.microbank.account.query.queries.FindAllAccountsQuery;
 
-public interface QueryHandler {
+public interface AccountQueryHandler {
     List<Account> handle(FindAllAccountsQuery query);
     List<Account> handle(FindAccountByIdQuery query);
     List<Account> handle(FindAccountByIdHolderQuery query);

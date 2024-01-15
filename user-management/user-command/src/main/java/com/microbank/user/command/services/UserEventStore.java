@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.microbank.user.command.aggregates.UserAggregate;
-import com.microbank.user.command.repositories.EventStoreRepository;
+import com.microbank.user.command.repositories.UserEventStoreRepository;
 import com.microbank.base.core.events.BaseEvent;
 import com.microbank.base.core.models.EventModel;
 import com.microbank.base.core.services.EventStore;
@@ -16,7 +16,7 @@ import com.microbank.base.core.services.EventStore;
 @Service
 public class UserEventStore implements EventStore {
     @Autowired
-    EventStoreRepository eventStoreRepository;
+    UserEventStoreRepository eventStoreRepository;
 
     @Override
     public void saveEvents(String aggregateId, Iterable<BaseEvent> events, int expectedVersion) {

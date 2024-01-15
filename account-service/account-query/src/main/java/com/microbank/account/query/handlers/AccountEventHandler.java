@@ -5,7 +5,7 @@ import com.microbank.account.core.events.AccountOpenedEvent;
 import com.microbank.account.core.events.FundsDepositedEvent;
 import com.microbank.account.core.events.FundsWithdrawnEvent;
 
-public interface EventHandler {
+public interface AccountEventHandler {
     void on(AccountOpenedEvent event);
     void on(FundsDepositedEvent event);
     void on(FundsWithdrawnEvent event);
