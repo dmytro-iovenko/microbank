@@ -26,7 +26,7 @@ public class RegisterUserController {
     @Autowired
     private CommandDispatcher commandDispatcher;
 
-    @PostMapping("path")
+    @PostMapping
     public ResponseEntity<RegisterUserResponse> registerUser(@RequestBody RegisterUserCommand command) {
         String id = UUID.randomUUID().toString();
         command.setId(id);
