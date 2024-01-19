@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.microbank.base.core.dispatchers.CommandDispatcher;
 import com.microbank.user.command.commands.UpdateUserCommand;
-import com.microbank.user.command.dto.BaseResponse;
+import com.microbank.user.core.dto.BaseResponse;
 
 import lombok.extern.slf4j.Slf4j;
 

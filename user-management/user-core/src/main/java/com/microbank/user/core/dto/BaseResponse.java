@@ -1,4 +1,4 @@
-package com.microbank.user.command.dto;
+package com.microbank.user.core.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
