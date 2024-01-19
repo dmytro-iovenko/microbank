@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FindUserByIdQuery implements BaseQuery{
+public class FindUserByIdQuery implements BaseQuery {
     private String id;
 }

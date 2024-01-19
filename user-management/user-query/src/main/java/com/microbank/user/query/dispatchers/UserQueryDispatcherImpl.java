@@ -8,11 +8,12 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.microbank.user.core.models.User;
+import com.microbank.user.query.dto.UserLookupResponse;
 import com.microbank.user.query.queries.BaseQuery;
 
 @Service
 public class UserQueryDispatcherImpl implements UserQueryDispatcher {
-        private final Map<Class<? extends BaseQuery>, List<QueryHandlerMethod>> routes = new HashMap<>();
+    private final Map<Class<? extends BaseQuery>, List<QueryHandlerMethod>> routes = new HashMap<>();
 
     @Override
     public <T extends BaseQuery> void registerHandler(Class<T> type, QueryHandlerMethod<T> handler) {
@@ -21,7 +22,7 @@ public class UserQueryDispatcherImpl implements UserQueryDispatcher {
     }
 
     @Override
-    public List<User> send(BaseQuery query) {
+    public UserLookupResponse send(BaseQuery query) {
         var handlers = routes.get(query.getClass());
         if (handlers == null || handlers.size() == 0) {
             throw new RuntimeException("No query handler was registered!");
