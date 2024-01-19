@@ -36,8 +36,8 @@ public class UserQueryHandlerImpl implements UserQueryHandler {
 
     @Override
     public UserLookupResponse handle(SearchUsersQuery query) {
-        // TODO Auto-generated method stub
-        return null;
+        var users = new ArrayList<>(userRepository.findByFilterRegex(query.getFilter()));
+        return new UserLookupResponse(users);
     }
 
 }
