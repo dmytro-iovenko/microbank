@@ -27,8 +27,11 @@ public class UserQueryHandlerImpl implements UserQueryHandler {
 
     @Override
     public UserLookupResponse handle(FindUserByIdQuery query) {
-        // TODO Auto-generated method stub
-        return null;
+        var user = userRepository.findById(query.getId());
+        if (user.isEmpty()) return null;
+        List<User> users = new ArrayList<>();
+        users.add(user.get());
+        return new UserLookupResponse(users);
     }
 
     @Override
